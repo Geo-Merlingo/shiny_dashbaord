@@ -106,7 +106,7 @@ CIT_trap <- st_transform(CIT_trap, crs =2193 )
 
 
 #--------------------------------------------------------------------------------
-# #Load trap NZ data, loads all trap records, should get data for total traps from trap database, which shows traps without records too. 
+# #Load trap NZ data
 # 
 # TNZ_trap <- st_read("data/my-projects-trap-records.shp")
 # 
