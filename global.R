@@ -1,4 +1,4 @@
-setwd("D:/PFWRA/R/practice_apps")
+#setwd("")
 
 
 library(stringdist)
