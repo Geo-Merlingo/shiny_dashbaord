@@ -1,4 +1,4 @@
-setwd("D:/PFWRA/R/practice_apps")
+#setwd("")
 
 source("global.R") 
 
@@ -9,12 +9,9 @@ library(bsicons)
 library(shiny)
 library(leaflet)
 library(rsconnect)
-
 library(htmlwidgets)
 
-#loop though plot below for years
-#next add a slider for date since fields in global
-#creating multiple maps and plots/ totals for different date extents. :)
+#improve: add a slider for year filters
 
 
 ui <- page_fillable(

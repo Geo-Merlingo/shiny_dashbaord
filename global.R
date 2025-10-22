@@ -1,3 +1,6 @@
+setwd("D:/PFWRA/R/practice_apps")
+
+
 library(stringdist)
 library(leaflet)
 library(RColorBrewer)
@@ -14,12 +17,10 @@ library(htmlwidgets)
 library(jsonlite)
 library(htmltools)
 
-
-#setwd("D:/PFWRA/R/practice_apps")
-
 source("Date_parser.R") 
 
-#improve, write a parser for all data which ensures everything is as expected, like data parser. 
+#improve: 
+#-write a parser for all data which ensures everything is as expected, like Date parser. 
 
 
 #Load CIT data
@@ -106,8 +107,8 @@ CIT_trap <- st_transform(CIT_trap, crs =2193 )
 
 
 #--------------------------------------------------------------------------------
-# #Load trap NZ data
-# 
+# #Load trapNZ data
+
 # TNZ_trap <- st_read("data/my-projects-trap-records.shp")
 # 
 # #parse date col to get uniform date format
@@ -116,15 +117,12 @@ CIT_trap <- st_transform(CIT_trap, crs =2193 )
 # #transform
 # TNZ_trap <- st_transform(TNZ_trap, crs =2193 )
 #------------------------------------------------------------------------------------
-#Load community group shape files, note this is the one i have created in ArcGIS and aims to represent trapping activity inside WRHA
+#Load area shape files. #change this to change the mapped area
 areas<- st_read("data/areas.shp")
 
 #ensure using the same crs
 #st_crs(areas)
 areas <- st_transform(areas, crs =2193 )
-
-#filter data to areas, so PF swanson which extends beyond WRHA boundary a long way isn;t included.
-#TNZ_trap <- st_filter(TNZ_trap, areas)
 
 #---------------------------------------------------------------
 #CIT transformations
@@ -218,15 +216,15 @@ CIT_catches_reduced <- CIT_catches_reduced %>%
 # TNZ_catches_reduced$trap_id <- as.character(TNZ_catches_reduced$trap_id)
 #--------------------------------------------------------------------------------
 #Bind rows
-# 
-# #bind whole 24 sets
+#Change to commented out code if using trapNZ data
+
+# #bind whole set
 # All_traps <- bind_rows(TNZ_reduced_whole, CIT_reduced_whole)
 All_traps<-CIT_reduced_whole
 
 # 
 # #bind catches subsets
 # All_catches <- bind_rows(TNZ_catches_reduced, CIT_catches_reduced)
-
 All_catches<-CIT_catches_reduced
 #--------------------------------------------------------------------------------
 #filter to date frames:
@@ -235,8 +233,8 @@ All_catches<-CIT_catches_reduced
 #Filter to data frames for both catches and all traps
 
 #get todays date
-today <- Sys.Date()
-print(today)
+#today <- Sys.Date()
+#print(today)
 
 
 # Define date filters (rolling and fixed starts)
